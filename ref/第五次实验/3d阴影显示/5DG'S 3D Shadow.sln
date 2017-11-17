@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5DG'S 3D Shadow", "5DG'S 3D Shadow.vcproj", "{E1E55BF7-A63E-43E4-87F0-0D0005AB5C82}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{E1E55BF7-A63E-43E4-87F0-0D0005AB5C82}.Debug.ActiveCfg = Debug|Win32
+		{E1E55BF7-A63E-43E4-87F0-0D0005AB5C82}.Debug.Build.0 = Debug|Win32
+		{E1E55BF7-A63E-43E4-87F0-0D0005AB5C82}.Release.ActiveCfg = Release|Win32
+		{E1E55BF7-A63E-43E4-87F0-0D0005AB5C82}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

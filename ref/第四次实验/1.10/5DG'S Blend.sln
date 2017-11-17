@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5DG'S Blend", "5DG'S Blend.vcproj", "{E74E36B1-2DFB-4184-B616-6A5E14AA98EC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{E74E36B1-2DFB-4184-B616-6A5E14AA98EC}.Debug.ActiveCfg = Debug|Win32
+		{E74E36B1-2DFB-4184-B616-6A5E14AA98EC}.Debug.Build.0 = Debug|Win32
+		{E74E36B1-2DFB-4184-B616-6A5E14AA98EC}.Release.ActiveCfg = Release|Win32
+		{E74E36B1-2DFB-4184-B616-6A5E14AA98EC}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

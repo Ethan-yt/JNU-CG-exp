@@ -1,0 +1,415 @@
+三、算法分析
+
+1.        Bezier曲线生成算法
+
+用de Casteljau算法产生曲线上的点列。
+
+de Casteljau算法：给定空间n+1个点 及参数t，则有：
+
+其中 即为 是在曲线上具有参数t的点。
+
+当n=3时，用de Casteljau算法递推出的 呈直角三角形，对应结果如下：
+
+该三角形垂直边上的点 是Bezier曲线 在0≤t≤1内的控制点，斜边上的点 是 在0≤t≤1/2内的控制点，水平直角边 是 在1/2≤t≤1内的控制点。
+
+       Bezier曲线生成算法程序设计
+
+#include<stdio.h>
+
+#include<graphics.h>
+
+float decas(int degree,float coeff[],float t){
+
+     int r,i;
+
+     float t1;
+
+     float coeffa[10];
+
+     t1=1.0-t;
+
+     for(i=0;i<=degree;i++){
+
+         coeffa[i]=coeff[i];
+
+     }
+
+     for(r=1;r<=degree;r++){
+
+        for(i=0;i<=degree-r;i++){
+
+            coeffa[i]=t1*coeffa[i]+t*coeffa[i+1];
+}
+
+     }
+
+     return (coeffa[0]);
+
+}
+
+ 
+
+void initgr(void) /* BGI初始化 */
+
+{
+
+int gd = DETECT, gm = 0; /* 和gd = VGA,gm = VGAHI是同样效果 */
+
+registerbgidriver(EGAVGA_driver);/* 注册BGI驱动后可以不需要.BGI文件的支持运行 */
+
+initgraph(&gd, &gm, "c:\tc20");
+
+}
+
+ 
+
+void main(){
+
+    int i,n,k;
+
+    float t,x,y;
+
+    static float px[4];
+
+    static float py[4];
+
+    n=3;
+
+    k=3000;
+
+ px[0]=50; px[1]=140;px[2]=400;px[3]=635;
+
+    py[0]=400; py[1]=20;py[2]=40;py[3]=420;
+
+ 
+
+    initgr();
+
+    cleardevice();
+
+    setcolor(BLUE);
+
+ 
+
+    for (i=0;i<3;i++)
+
+        line(px[i],py[i],px[i+1],py[i+1]);
+
+ 
+
+    setcolor(YELLOW);
+
+    for(i=0;i<=k;i++){
+
+        t=(float)i/k;
+
+        x=decas(n,px,t);
+
+        y=decas(n,py,t);
+
+        if(i==0)
+
+         moveto(x,y);
+
+        else
+
+            lineto(x,y);
+
+    }
+
+ 
+
+    getch();           /*按ESC键退出*/
+
+    closegraph();
+
+      
+
+}
+
+
+
+
+2::::
+
+#include <GL/glut.h>
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#include <vector>
+
+using namespace std;
+
+struct Point {
+
+int x, y;
+
+};
+
+Point pt[4], bz[11];
+
+vector<Point> vpt;
+
+bool bDraw;
+
+int nInput;
+
+void CalcBZPoints()
+
+{
+
+float a0,a1,a2,a3,b0,b1,b2,b3;
+
+a0=pt[0].x;
+
+a1=-3*pt[0].x+3*pt[1].x;
+
+a2=3*pt[0].x-6*pt[1].x+3*pt[2].x;
+
+a3=-pt[0].x+3*pt[1].x-3*pt[2].x+pt[3].x;
+
+b0=pt[0].y;
+
+b1=-3*pt[0].y+3*pt[1].y;
+
+b2=3*pt[0].y-6*pt[1].y+3*pt[2].y;
+
+b3=-pt[0].y+3*pt[1].y-3*pt[2].y+pt[3].y;
+
+float t = 0;
+
+float dt = 0.01;
+
+for(int i = 0; t<1.1; t+=0.1, i++)
+
+{
+
+bz[i].x = a0+a1*t+a2*t*t+a3*t*t*t;
+
+bz[i].y = b0+b1*t+b2*t*t+b3*t*t*t;
+
+}
+
+}
+
+void ControlPoint(vector<Point> vpt)
+
+{
+
+glPointSize(2);
+
+for(int i=0; i<vpt.size(); i++)
+
+{
+
+glBegin (GL_POINTS);
+
+glColor3f (1.0f, 0.0f, 0.0f); glVertex2i (vpt[i].x,vpt[i].y);
+
+glEnd ();
+
+}
+
+}
+
+void PolylineGL(Point *pt, int num)
+
+{
+
+glBegin (GL_LINE_STRIP);
+
+for(int i=0;i<num;i++)
+
+{
+
+glColor3f (1.0f, 1.0f, 1.0f);
+
+glVertex2i (pt[i].x,pt[i].y);
+
+}
+
+glEnd ();
+
+}
+
+void myDisplay()
+
+{
+
+glClear(GL_COLOR_BUFFER_BIT);
+
+glColor3f (1.0f, 1.0f, 1.0f);
+
+if (vpt.size() > 0) {
+
+ControlPoint(vpt);
+
+}
+
+if(bDraw)
+
+{
+
+PolylineGL(pt, 4);
+
+CalcBZPoints();
+
+PolylineGL(bz, 11);
+
+}
+
+glFlush();
+
+}
+
+void Init()
+
+{
+
+glClearColor(0.0, 0.0, 0.0, 0.0);
+
+glShadeModel(GL_SMOOTH);
+
+printf("Please Click left button of mouse to input control point of Bezier Curve!\n");
+
+}
+
+void Reshape(int w, int h)
+
+{
+
+glViewport(0, 0, (GLsizei) w, (GLsizei) h);
+
+glMatrixMode(GL_PROJECTION);
+
+glLoadIdentity();
+
+gluOrtho2D(0.0, (GLdouble) w, 0.0, (GLdouble) h);
+
+}
+
+void mouse(int button, int state, int x, int y)
+
+{
+
+switch (button)
+
+{
+
+case GLUT_LEFT_BUTTON:
+
+if (state == GLUT_DOWN)
+
+{
+
+if (nInput == 0)
+
+{
+
+pt[0].x = x;
+
+pt[0].y = 480 - y;
+
+nInput = 1;
+
+vpt.clear();
+
+vpt.push_back(pt[0]);
+
+bDraw = false;
+
+glutPostRedisplay();//
+
+}
+
+else if (nInput == 1)
+
+{
+
+pt[1].x = x;
+
+pt[1].y = 480 - y;
+
+vpt.push_back(pt[1]);
+
+nInput = 2;
+
+glutPostRedisplay();//
+
+}
+
+else if (nInput == 2)
+
+{
+
+pt[2].x = x;
+
+pt[2].y = 480 - y;
+
+vpt.push_back(pt[2]);
+
+nInput = 3;
+
+glutPostRedisplay();//
+
+}
+
+else if (nInput == 3)
+
+{
+
+pt[3].x = x;
+
+pt[3].y = 480 - y;
+
+bDraw = true;
+
+vpt.push_back(pt[3]);
+
+nInput = 0;
+
+glutPostRedisplay();//
+
+}
+
+}
+
+break;
+
+default:
+
+break;
+
+}
+
+}
+
+int main(int argc, char *argv[])
+
+{
+
+glutInit(&argc, argv);
+
+glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
+
+glutInitWindowPosition(100, 100);
+
+glutInitWindowSize(640, 480);
+
+glutCreateWindow("Hello World!");
+
+Init();
+
+glutDisplayFunc(myDisplay);
+
+glutReshapeFunc(Reshape);
+
+glutMouseFunc(mouse);
+
+glutMainLoop();
+
+return 0;
+
+}

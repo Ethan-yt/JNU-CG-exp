@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5DG'S Earth And Moon", "5DG'S Earth And Moon.vcproj", "{DFB305D2-1220-4C26-87F0-3C3F00FA09EA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{DFB305D2-1220-4C26-87F0-3C3F00FA09EA}.Debug.ActiveCfg = Debug|Win32
+		{DFB305D2-1220-4C26-87F0-3C3F00FA09EA}.Debug.Build.0 = Debug|Win32
+		{DFB305D2-1220-4C26-87F0-3C3F00FA09EA}.Release.ActiveCfg = Release|Win32
+		{DFB305D2-1220-4C26-87F0-3C3F00FA09EA}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

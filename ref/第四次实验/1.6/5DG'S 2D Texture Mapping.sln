@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5DG'S 2D Texture Mapping", "5DG'S 2D Texture Mapping.vcproj", "{E5DED99A-4B2B-451A-99E4-10E89EB2C1C1}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{E5DED99A-4B2B-451A-99E4-10E89EB2C1C1}.Debug.ActiveCfg = Debug|Win32
+		{E5DED99A-4B2B-451A-99E4-10E89EB2C1C1}.Debug.Build.0 = Debug|Win32
+		{E5DED99A-4B2B-451A-99E4-10E89EB2C1C1}.Release.ActiveCfg = Release|Win32
+		{E5DED99A-4B2B-451A-99E4-10E89EB2C1C1}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
