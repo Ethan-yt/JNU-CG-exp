@@ -1,0 +1,3 @@
+/Volumes/macFile/Files/Google 云端硬盘/Study/计算机图形学/ex4/src/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Volumes/macFile/Files/Google 云端硬盘/Study/计算机图形学/ex4/src/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Volumes/macFile/Files/Google 云端硬盘/Study/计算机图形学/ex4/src/cmake-build-debug/CMakeFiles/ex4.dir

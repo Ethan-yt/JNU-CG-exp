@@ -1,0 +1,4 @@
+/Volumes/macFile/Apps/JetBrains/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/Volumes/macFile/Files/Google 云端硬盘/Study/计算机图形学/ex4/src"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Volumes/macFile/Files/Google 云端硬盘/Study/计算机图形学/ex4/src/cmake-build-debug
