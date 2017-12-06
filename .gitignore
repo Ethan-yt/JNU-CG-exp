@@ -1,0 +1,10 @@
+cmake-build-debug/
+.idea/
+*.aux
+*.fdb_latexmk
+*.fls
+*.sysnctex.gz
+*.xdv
+*.log
+*.gz
+*.out
